@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/categorias">Categorias</a>
+        </li>
+
+      </ul>
+      {{#if user}}
+      <ul class="navbar-nav mb-2 mb-lg-0 d-flex">
+        {{#if user.eAdmin}}
+        <li class="nav-item">
+          <a class="nav-link" href="/admin">Admin</a>
+        </li>
+        {{else}}
+        {{/if}}
+        <li class="nav-item">
+          <a class="nav-link" href="#">{{user.nome}}</a>
+        </li>
+        <li class="nav-item">
+          <form id="logout" action="/usuarios/logout" method="post">
+          <a class="nav-link" href="javascript:{}" onclick="document.getElementById('logout').submit();">Sair</a>
+          </form>
+        </li>
+      </ul>
+      {{else}}
+
+      <ul class="navbar-nav mb-2 mb-lg-0 d-flex">
+        <li class="nav-item">
+          <a class="nav-link" href="/usuarios/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/usuarios/registro">Registro</a>
+        </li>
+      </ul>
+      {{/if}}
+
+    </div>
+  </div>
+</nav>
